@@ -1,28 +1,21 @@
 import * as types from '../actions/actionTypes';
-import initialState from './initialState';
+//import initialState from './initialState';
 //import {browserHistory} from 'react-router';
 
 
-const recuriterNote = (state,action) => {
-  if (action.type === 'ADD_NOTES') {
-    return {
-      fName :action.payload.fName,
-      lName:action.payload.lName,
-      notes:action.payload.notes,
-      email:action.payload.email,
-      phone:action.payload.phone,
-    }
+export default function recuriterNotes(state = [{"notes":"tee","firstName":"raj","phoneNumber":"1234","email":"rr"}], action) {
+console.log(action.type);
+  switch(action.type) {
+
+    case types.CREATE_NOTES_SUCCESS:
+      console.log('Inside recuriterNotes');
+      return state;
+    case types.LOAD_NOTES_SUCCESS:
+      console.log('inside load success');
+      console.log(`state length is ${state.length}`)
+      return Object.assign([],state,action.notes);
+
+    default:
+      return state;
   }
-  return state;
 }
-
-const recuriterNotes = (state = [],action) => {
-  if (action.type === 'ADD_NOTES') {
-    const temp = recuriterNote(undefined,action)
-    return [...state,temp]
-  }
-  return state;
-}
-
-
-export default recuriterNotes;
