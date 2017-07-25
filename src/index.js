@@ -6,7 +6,7 @@ import configureStore from './store/configureStore';
 import {Provider, connect} from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import { Router } from 'react-router';
-import JobList from './components/jobs/jobList';
+import JobForm from './components/jobs/jobForm';
 import routes from './routes';
 
 
@@ -14,7 +14,7 @@ const store = configureStore();
 
 render(
   <Provider store={store}>
-     <JobList />
+     <JobForm />
   </Provider>,
   document.getElementById('root')
 );
