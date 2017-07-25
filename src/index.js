@@ -1,8 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render }  from 'react-dom';
 import './styles/index.css';
 import App from './components/App';
+import configureStore from './store/configureStore';
+import {Provider, connect} from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
+import { Router } from 'react-router';
+import JobList from './components/jobs/jobList';
+import routes from './routes';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const store = configureStore();
+
+render(
+  <Provider store={store}>
+     <JobList />
+  </Provider>,
+  document.getElementById('root')
+);
 registerServiceWorker();
